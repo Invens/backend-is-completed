@@ -12,7 +12,7 @@ const FileUploadForm = () => {
 
     useEffect(() => {
         // Fetch categories from the server
-        fetch('http://localhost:3002/api/categories')
+        fetch('http://89.116.34.51:3002/api/categories')
             .then((response) => response.json())
             .then((data) => {
                 console.log('Fetched categories:', data);
@@ -20,6 +20,7 @@ const FileUploadForm = () => {
             })
             .catch((error) => console.error('Error fetching categories:', error));
     }, []);
+    
 
     const handleFileChange = (event) => {
         setSelectedFiles(Array.from(event.target.files));
@@ -44,7 +45,7 @@ const FileUploadForm = () => {
         formDataToSend.append('category_id', formData.Category);
 
         try {
-            const response = await fetch('http://localhost:3002/api/upload', {
+            const response = await fetch('http://89.116.34.51:3002/api/upload', {
                 method: 'POST',
                 body: formDataToSend,
             });
@@ -87,7 +88,7 @@ const FileUploadForm = () => {
                             value={category.id}
                             style={{ backgroundColor: 'red' }}
                         >
-                            {category.name}(ID: {category.id})
+                            {category.name}
                         </option>
                     ))}
                 </select>
